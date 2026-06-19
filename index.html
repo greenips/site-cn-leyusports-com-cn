@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>乐鱼体育 · 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f9fc;
+            color: #1e2b3c;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* hero 开场 */
+        .hero {
+            margin-bottom: 2.5rem;
+            padding: 1.8rem 0 0.8rem 0;
+            border-bottom: 2px solid #cce3de;
+        }
+
+        .hero p:first-child {
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+            color: #2f5b5a;
+            margin-bottom: 0.4rem;
+            font-weight: 350;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 450;
+            color: #0f3d3a;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .hero .opening {
+            font-size: 1.05rem;
+            max-width: 640px;
+            color: #2f4b4a;
+            background: #e2f0ed;
+            padding: 0.9rem 1.2rem;
+            border-radius: 24px 24px 24px 6px;
+        }
+
+        /* 承接段落 */
+        .bridge {
+            margin: 1.8rem 0 2.2rem 0;
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            padding: 1.6rem 1.8rem;
+            border-radius: 32px 8px 32px 8px;
+            box-shadow: 0 8px 18px -6px rgba(23, 78, 72, 0.08);
+            border-left: 4px solid #3b9b8f;
+        }
+
+        .bridge p {
+            margin-bottom: 1.1rem;
+            font-size: 1rem;
+            color: #1f3836;
+        }
+
+        .bridge p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bridge a {
+            color: #226b62;
+            text-decoration: none;
+            font-weight: 500;
+            padding-bottom: 2px;
+            border-bottom: 1px dashed #7cb3ab;
+            transition: border 0.2s;
+        }
+
+        .bridge a:hover {
+            border-bottom: 1px solid #1b7f73;
+        }
+
+        /* 网格卡片 — 特点列表 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 2.5rem 0 2rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 24px 8px 24px 8px;
+            padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+            box-shadow: 0 6px 14px rgba(0, 40, 36, 0.04);
+            border: 1px solid #deece9;
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 22px -8px rgba(25, 90, 82, 0.12);
+            border-color: #aacfc7;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0b443f;
+            margin-bottom: 0.35rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .feature-card h3::before {
+            content: "▹";
+            color: #35998b;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: #2b4a46;
+            line-height: 1.5;
+        }
+
+        .feature-card .small-note {
+            display: block;
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            color: #698b85;
+            border-top: 1px solid #e3efec;
+            padding-top: 0.5rem;
+        }
+
+        /* 温和结尾 + 场景提示 */
+        .closing-section {
+            margin: 2.2rem 0 2.8rem;
+            padding: 1.6rem 1.5rem;
+            background: #e9f3f0;
+            border-radius: 40px 8px 40px 8px;
+        }
+
+        .closing-section p {
+            margin-bottom: 0.9rem;
+            font-size: 0.98rem;
+            color: #1b3a37;
+        }
+
+        .closing-section .signoff {
+            font-style: normal;
+            margin-top: 1.2rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #bcd7d1;
+            font-size: 0.9rem;
+            color: #386e66;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .closing-section a {
+            color: #1b7a6c;
+            text-decoration: none;
+            border-bottom: 1px dotted #79ada3;
+            font-weight: 450;
+        }
+
+        .closing-section a:hover {
+            border-bottom: 1px solid #0d5f54;
+        }
+
+        /* 小提示 / FAQ 摘要 */
+        .faq-tiny {
+            background: #f2f8f7;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0 1rem;
+            border: 1px solid #cddfda;
+        }
+
+        .faq-tiny h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #144a44;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.01em;
+        }
+
+        .faq-tiny ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .faq-tiny li {
+            font-size: 0.9rem;
+            color: #254f4a;
+            padding-left: 1rem;
+            border-left: 3px solid #7fb9ae;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+        }
+
+        .faq-tiny li strong {
+            font-weight: 550;
+            color: #0b4940;
+        }
+
+        /* 移动端 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.6rem 1rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero .opening {
+                font-size: 0.95rem;
+                padding: 0.8rem 1rem;
+            }
+            .bridge {
+                padding: 1.2rem 1.2rem;
+                border-radius: 24px 6px 24px 6px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .feature-card {
+                padding: 1.2rem 1rem;
+            }
+            .closing-section {
+                padding: 1.3rem 1.2rem;
+            }
+            .faq-tiny {
+                padding: 1rem 1.1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 1.2rem;
+            font-size: 0.8rem;
+            color: #6b8a84;
+            text-align: center;
+            border-top: 1px solid #d4e3df;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 开场短句 -->
+    <div class="hero">
+        <p>◈ 叙述 · 入口与边界</p>
+        <h1>一个稳定的页面，<br>一段不绕远的路径。</h1>
+        <div class="opening">
+            人们总在寻找一个可靠的地方——不必反复确认，不必担心链接失效。<br>
+            乐鱼体育，正是这样一处安静的起点。
+        </div>
+    </div>
+
+    <!-- 承接段落：从稳定入口与页面说明的角度 -->
+    <div class="bridge">
+        <p>
+            什么是稳定？是每次打开都得到相同的回应，是界面不因时间或网络而变得陌生。
+            作为长期维护的站点，<a href="https://site-cn-leyusports.com.cn">乐鱼体育</a> 提供的正是这样一种踏实感：
+            它像一个写在便签纸上的地址，每次照着走，都会抵达同一个地方。
+        </p>
+        <p>
+            页面结构、链接指向、内容区域——这些细节被反复斟酌，不是为了花哨，而是为了让每个访客都清楚自己在哪、能做什么。
+            从首页开始，每一层都保持着一致的节奏。
+        </p>
+    </div>
+
+    <!-- 特点列表：网格卡片 -->
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>清晰的层级</h3>
+            <p>导航与分区有明确边界，不堆砌信息。从入口到具体内容，路径不超过三次点击。</p>
+            <span class="small-note">减少认知负担</span>
+        </div>
+        <div class="feature-card">
+            <h3>克制的视觉</h3>
+            <p>蓝绿调为主，不过度饱和。卡片、间距、字体大小都照顾长时间阅读的舒适度。</p>
+            <span class="small-note">专注内容本身</span>
+        </div>
+        <div class="feature-card">
+            <h3>一致的体验</h3>
+            <p>无论使用手机、平板还是桌面，布局自适应，交互反馈统一，按钮与链接行为可预判。</p>
+            <span class="small-note">跨设备友好</span>
+        </div>
+        <div class="feature-card">
+            <h3>平实的说明</h3>
+            <p>每个页面都附带必要的上下文——告诉访客当前板块的用途，不刻意引导，只提供选择。</p>
+            <span class="small-note">信息透明</span>
+        </div>
+    </div>
+
+    <!-- 温和结尾 + 场景提示 -->
+    <div class="closing-section">
+        <p>
+            假如你只是偶然路过，或者打算把这里当作日常的一站——都无所谓。
+            一个好的入口不需要太多宣言，它只需要在你想起来的时候，还在那里。
+        </p>
+        <p>
+            你可以随时通过 <a href="https://site-cn-leyusports.com.cn">乐鱼体育</a> 回到这个起点，浏览你关心的内容。
+            不必担心版本过期或链接迁移，保持稳定是它最基本的承诺。
+        </p>
+        <div class="signoff">
+            <span>—— 一个页面，一个入口，仅此而已。</span>
+            <span style="opacity:0.7;">·</span>
+            <span>叙述于午后</span>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要（简略） -->
+    <div class="faq-tiny">
+        <h4>常见疑问 · 摘要</h4>
+        <ul>
+            <li><strong>页面访问是否稳定？</strong> 站点托管于持续维护的环境，域名与结构长期有效。</li>
+            <li><strong>如何确认自己到达了正确页面？</strong> 地址栏以 site-cn-leyusports.com.cn 开头，页面带有蓝绿色标识与本文所述风格。</li>
+            <li><strong>内容是否会频繁变化？</strong> 核心布局与信息框架保持稳定，细节优化会提前说明。</li>
+        </ul>
+    </div>
+
+    <footer>
+        <span>乐鱼体育 · 页面说明 · 稳定入口</span>
+    </footer>
+</div>
+</body>
+</html>
