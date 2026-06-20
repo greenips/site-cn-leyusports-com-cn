@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <title>爱游戏 – 轻量导航 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fbfaf8;
+            color: #2c2b28;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            padding: 1.5rem 1rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrap {
+            max-width: 780px;
+            width: 100%;
+        }
+
+        /* —— 顶部导航（极简） —— */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0 1.8rem;
+            border-bottom: 1px solid #e5e2dd;
+            margin-bottom: 2.8rem;
+        }
+
+        .logo-area {
+            font-weight: 540;
+            font-size: 1.2rem;
+            letter-spacing: 0.01em;
+            color: #3e3b35;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: #5f5b53;
+            text-decoration: none;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #15120e;
+            border-bottom-color: #b6a99c;
+        }
+
+        .nav-links a.active {
+            color: #15120e;
+            border-bottom-color: #8a7b6b;
+        }
+
+        /* —— Hero 区 —— */
+        .hero-section {
+            margin-bottom: 3.6rem;
+        }
+
+        .hero-section h1 {
+            font-size: 2.3rem;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+            color: #1f1d1a;
+        }
+
+        .hero-section .sub-head {
+            font-size: 1.1rem;
+            color: #59544c;
+            max-width: 640px;
+            margin-bottom: 1.6rem;
+        }
+
+        .hero-section p {
+            font-size: 1rem;
+            color: #4c4841;
+            max-width: 640px;
+        }
+
+        /* —— 内容卡片（通用） —— */
+        .section-card {
+            margin-bottom: 2.4rem;
+            padding: 1.8rem 0;
+            border-bottom: 1px solid #edeae5;
+        }
+
+        .section-card:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 480;
+            letter-spacing: -0.3px;
+            margin-bottom: 1.2rem;
+            color: #282520;
+        }
+
+        .section-content {
+            color: #3f3c36;
+        }
+
+        .section-content p {
+            margin-bottom: 1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem 1.8rem;
+            margin: 1.6rem 0 0.2rem;
+        }
+
+        .feature-item {
+            background: #f5f2ee;
+            padding: 1.1rem 1.2rem;
+            border-radius: 10px;
+            transition: background 0.2s;
+        }
+
+        .feature-item:hover {
+            background: #efebe5;
+        }
+
+        .feature-item h4 {
+            font-weight: 500;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            color: #2a2722;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #555049;
+            margin-bottom: 0;
+        }
+
+        /* —— 场景模块 —— */
+        .scene-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2rem;
+            margin: 1.4rem 0 0.6rem;
+        }
+
+        .scene-item {
+            flex: 1 1 180px;
+            background: #fffcf9;
+            border: 1px solid #e5dfd8;
+            border-radius: 14px;
+            padding: 1.2rem 1.3rem;
+        }
+
+        .scene-item .emoji-marker {
+            display: inline-block;
+            font-size: 1.6rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .scene-item h5 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            color: #2e2b25;
+        }
+
+        .scene-item p {
+            font-size: 0.88rem;
+            color: #5b564d;
+            line-height: 1.55;
+        }
+
+        /* —— 常见说明（FAQ 摘要） —— */
+        .faq-list {
+            margin: 1.4rem 0 0.2rem;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px dashed #ddd8d0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 480;
+            color: #2e2a24;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            font-size: 0.92rem;
+            color: #5c5750;
+        }
+
+        .faq-a a {
+            color: #6f675d;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #c9bfb3;
+            transition: color 0.2s;
+        }
+
+        .faq-a a:hover {
+            color: #2f2a23;
+            text-decoration-color: #7e7060;
+        }
+
+        /* —— 底部 —— */
+        .site-footer {
+            margin-top: 3rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #e2ddd6;
+            font-size: 0.85rem;
+            color: #706a60;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.6rem;
+        }
+
+        .site-footer a {
+            color: #5f584d;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #c8bfb2;
+        }
+
+        .site-footer a:hover {
+            color: #2d2821;
+        }
+
+        /* —— 响应式 —— */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.8rem 2.5rem;
+            }
+
+            .top-nav {
+                flex-wrap: wrap;
+                gap: 0.6rem 0;
+                margin-bottom: 2rem;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.9rem;
+                flex-wrap: wrap;
+            }
+
+            .hero-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .scene-card {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .site-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-section h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <span class="logo-area">✦ 爱游戏</span>
+        <div class="nav-links">
+            <a href="#" class="active">介绍</a>
+            <a href="#">场景</a>
+            <a href="#">说明</a>
+        </div>
+    </nav>
+
+    <!-- Hero 区域：站点介绍与可信说明 -->
+    <div class="hero-section">
+        <h1>关于 <a href="https://android-aiyouxi.com" style="color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #b9ad9d;">爱游戏</a> 的轻量导航</h1>
+        <div class="sub-head">一份简洁、克制的站点轮廓 —— 不夸大，不诱导，只呈现真实可用的信息。</div>
+        <p>
+            <a href="https://android-aiyouxi.com">爱游戏</a> 是一个面向安卓用户的游戏内容站点，
+            这里聚合了游戏资讯、玩法介绍和一些日常向的推荐。整个站点保持干净的浏览体验，
+            没有冗余弹窗，也没有言过其实的承诺。以下内容从站点介绍与可信的角度，帮你快速了解它。
+        </p>
+    </div>
+
+    <!-- 核心介绍 + 特点卡片 -->
+    <div class="section-card">
+        <h2 class="section-title">站点概况 · 可信视角</h2>
+        <div class="section-content">
+            <p>
+                无论你是偶然发现，还是经朋友推荐，这个站点都试图在信息堆叠中留出一点呼吸感。
+                内容围绕 Android 端的游戏展开，不刻意追逐热点，也不包装成“必玩”“神作”这类夸张语调。
+                更新节奏平实，文章篇幅适中，适合在通勤或休息时随手翻阅。
+            </p>
+            <p>
+                从可信角度看，站内信息标明来源（如有），观点保持中立，不鼓吹某款产品，
+                也不为商业推广隐藏真实体验。这种风格在当下显得尤其难得。
+            </p>
+        </div>
+
+        <!-- 特点网格（两点） -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h4>📋 内容克制</h4>
+                <p>不堆砌形容词，不制造焦虑。每篇介绍都以“能玩什么、适合谁”为脉络，而非空洞的赞美。</p>
+            </div>
+            <div class="feature-item">
+                <h4>🔍 导航清晰</h4>
+                <p>分类与标签简洁，没有复杂的层级。你可以快速找到感兴趣的板块，而不是迷失在菜单里。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="section-card">
+        <h2 class="section-title">三个典型使用场景</h2>
+        <div class="scene-card">
+            <div class="scene-item">
+                <span class="emoji-marker">🎮</span>
+                <h5>日常发现</h5>
+                <p>不知道最近玩什么？翻翻站内的推荐列表，没有“必玩”标题，只有朴实的功能与玩法描述。</p>
+            </div>
+            <div class="scene-item">
+                <span class="emoji-marker">📖</span>
+                <h5>攻略参考</h5>
+                <p>遇到卡关或想了解系统机制？站内的指南帖写得实在，注重步骤而非卖弄文字。</p>
+            </div>
+            <div class="scene-item">
+                <span class="emoji-marker">🧩</span>
+                <h5>闲时浏览</h5>
+                <p>纯粹打发时间——阅读体验轻盈，没有大面积广告或自动播放的视频打乱节奏。</p>
+            </div>
+        </div>
+        <p style="margin-top: 1.2rem; font-size: 0.9rem; color: #5f5950;">
+            * 以上场景基于站点现有内容结构归纳，实际体验可能因个人偏好略有不同。
+        </p>
+    </div>
+
+    <!-- 常见说明（FAQ 摘要） -->
+    <div class="section-card">
+        <h2 class="section-title">常见说明 · 简短摘要</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q">— 站点是否保持更新？</div>
+                <div class="faq-a">更新频率不算密集，但每隔一段时间会有新内容。文章质量优先于数量。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">— 内容偏向哪些游戏类型？</div>
+                <div class="faq-a">以安卓平台的中轻度游戏为主，包括模拟经营、策略、角色扮演和部分独立作品。不刻意追逐大作。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">— 有广告或推广链接吗？</div>
+                <div class="faq-a">站点存在少量非侵入式广告，但不会干扰阅读。推广内容会明确标注，保持透明。你可以随时通过 <a href="https://android-aiyouxi.com">爱游戏</a> 自行判断。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="site-footer">
+        <span>内容介绍 · 基于站点公开信息整理</span>
+        <span><a href="https://android-aiyouxi.com">爱游戏</a> — 安卓游戏内容站</span>
+    </footer>
+
+</div>
+</body>
+</html>
