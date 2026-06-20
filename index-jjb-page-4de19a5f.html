@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jjb · 一本笔记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f2f0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.65;
+            color: #2c2c2c;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .page-wrap {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            text-align: left;
+            margin-bottom: 3.5rem;
+            padding: 0 0.25rem;
+        }
+        .hero .label {
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #9a9a97;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #1f1f1f;
+            margin-bottom: 0.8rem;
+        }
+        .hero h1 em {
+            font-style: normal;
+            background: #e1ddd8;
+            padding: 0 0.25rem;
+            color: #2e2e2e;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #5f5f5c;
+            max-width: 580px;
+            line-height: 1.6;
+            border-left: 3px solid #d0ccc6;
+            padding-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+            border: 1px solid #eae8e4;
+            transition: box-shadow 0.15s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .card h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
+            color: #242424;
+            border-bottom: 1px solid #eeedea;
+            padding-bottom: 0.6rem;
+        }
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin: 1.4rem 0 0.5rem 0;
+            color: #2f2f2f;
+        }
+        .card p {
+            margin-bottom: 1rem;
+        }
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 引用 */
+        .insight {
+            background: #f0eeeb;
+            border-left: 4px solid #b7b2ab;
+            padding: 1.4rem 1.8rem;
+            border-radius: 12px;
+            margin: 1.6rem 0;
+            font-size: 0.98rem;
+            color: #40403d;
+        }
+        .insight::before {
+            content: "💡 ";
+            font-size: 1.1rem;
+        }
+
+        /* 提示块 */
+        .hint-box {
+            background: #f7f6f4;
+            border-radius: 16px;
+            padding: 1.5rem 1.8rem;
+            margin: 1.2rem 0 0.6rem 0;
+            border: 1px solid #e3e0db;
+        }
+        .hint-box strong {
+            font-weight: 500;
+            color: #1f1f1f;
+        }
+
+        /* 访问句 */
+        .visit-sentence {
+            margin-top: 2.8rem;
+            font-size: 1.05rem;
+            background: #fffcf9;
+            border: 1px solid #e4dfd9;
+            border-radius: 36px;
+            padding: 1rem 2rem;
+            text-align: center;
+            color: #3a3a37;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+        .visit-sentence a {
+            color: #1f1f1f;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1.5px;
+            text-decoration-color: #b7b2ab;
+            font-weight: 500;
+            transition: color 0.15s, text-decoration-color 0.15s;
+        }
+        .visit-sentence a:hover {
+            color: #545454;
+            text-decoration-color: #7a7570;
+        }
+
+        /* 列表 */
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0 0.2rem 0;
+        }
+        .feature-list li {
+            padding: 0.35rem 0 0.35rem 1.8rem;
+            position: relative;
+            color: #3d3d3a;
+        }
+        .feature-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #b7b2ab;
+        }
+
+        /* 响应 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            .hero h1 {
+                font-size: 2.0rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+                padding-left: 0.9rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+                border-radius: 16px;
+            }
+            .card h2 {
+                font-size: 1.3rem;
+            }
+            .visit-sentence {
+                font-size: 0.95rem;
+                padding: 0.8rem 1.2rem;
+                border-radius: 28px;
+            }
+            .insight {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        /* 分隔微调 */
+        .spacer {
+            height: 0.5rem;
+        }
+        .fine-print {
+            font-size: 0.85rem;
+            color: #8f8c86;
+            margin-top: 3rem;
+            text-align: center;
+            border-top: 1px solid #e0ddd7;
+            padding-top: 1.8rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- hero -->
+    <div class="hero">
+        <div class="label">/ 笔记 · 结构 · 安静</div>
+        <h1><em>jjb</em> 不是速写，是整理</h1>
+        <div class="sub">一个在线的书写容器，适合那些不想被格式打扰、只想把想法放好的人。</div>
+    </div>
+
+    <!-- 第一张卡片：背景与主题 -->
+    <div class="card">
+        <h2>从一行标题开始</h2>
+        <p>很多笔记工具试图让你「高效产出」，但 <strong>jjb</strong> 的出发点有点不一样——它更像一个安静的房间，你推门进去，先把脑子里的片段、未成形的句子、甚至只有自己懂的关键词放下来。不着急分类，不要求完整。</p>
+        <p>这种「未完成」的状态，恰恰是思考最真实的阶段。而 jjb 做的，只是保留这种原样，同时给一点轻量的秩序：标题、分段、引用、空白。够用，但不抢戏。</p>
+        <div class="insight">
+            写东西的人大概都有经验：很多时候阻碍你的不是内容本身，而是那个编辑器——按钮太多、选项太杂、光标一闪烁就忘了要说什么。jjb 把界面退到后面，让文字走到前面。
+        </div>
+        <p>主题内容不必宏大。琐碎的观察、半途而废的想法、读书时划的句子，都值得有一个不打眼的角落。jjb 正好就是那个角落。</p>
+    </div>
+
+    <!-- 第二张卡片：特点与场景 -->
+    <div class="card">
+        <h2>它擅长什么</h2>
+        <p>说「擅长」可能有点重，不如说它适合几类简单的场景：</p>
+        <ul class="feature-list">
+            <li>日常记录，不需要富文本，只需要干净的文字块</li>
+            <li>碎片整理，把散落在各处的小段落聚合到一处</li>
+            <li>轻量草稿，写邮件、写短评、写摘要之前的预写空间</li>
+            <li>安静阅读，没有弹窗、没有推荐流、没有红点</li>
+        </ul>
+        <div class="hint-box">
+            <strong>一点观察：</strong> 当工具变得复杂，我们常常花时间去「管理笔记」而非「产生笔记」。jjb 刻意简化了结构，让写这件事回归到「写下」本身。
+        </div>
+        <p style="margin-top: 1.2rem;">无论是构思一段叙述，还是单纯想保存一段有意思的对话，jjb 都提供一个不施加压力的容器。它不会催促你写满，也不会因为留白太多而显得空旷。</p>
+    </div>
+
+    <!-- 第三张卡片：引用·FAQ摘要 -->
+    <div class="card">
+        <h2>一些常见疑问</h2>
+        <h3>需要注册吗？</h3>
+        <p>jjb 本身是一个轻量的页面工具，访问后即可使用。基本的书写和保存功能对所有人开放，没有复杂的注册门槛。</p>
+        <h3>内容会丢失吗？</h3>
+        <p>它依赖浏览器的本地存储逻辑，建议定期导出备份。对于重要文字，也可以复制到自己的文档中留存。工具只是辅助，内容的主权始终在你手里。</p>
+        <h3>适合写长文吗？</h3>
+        <p>长文也可以，但 jjb 更偏向短篇、片段式的记录。如果你在写一个系列，可以把它当作「临时工作台」——整理好了再移到更正式的地方。</p>
+        <div class="insight">
+            引用一句不知道出处的话：「不要等到想清楚了再写，写，本身就是想清楚的过程。」jjb 也许不能帮你思考，但它至少不会挡你的路。
+        </div>
+    </div>
+
+    <!-- 访问句（自然嵌入链接） -->
+    <div class="visit-sentence">
+        如果你也在找一个可以随意放文字的地方，或许可以试试 <a href="https://index-jjb.com">jjb</a> 。它不喧哗，只是在那里，等你写完。
+    </div>
+
+    <!-- 底部 -->
+    <div class="fine-print">
+        jjb · 一个关于书写的安静角落
+    </div>
+</div>
+</body>
+</html>
